@@ -89,5 +89,19 @@ class ItemRepositoryTest {
         then(itemList.get(0).getItemNm()).isEqualTo("테스트 상품4");
     }
 
+    @DisplayName("@Query를 이용한 상품 조회 테스트")
+    @Test
+    public void findByItemDetail(){
+        List<Item> itemList = itemRepository.findByItemDetail("테스트 상품 상세");
+        then(itemList).hasSize(10);
+    }
+
+    @DisplayName("nativeQuery 속성을 이용한 상품 조회 테스트")
+    @Test
+    public void findByItemDetailByNative(){
+        List<Item> itemList = itemRepository.findByItemDetailByNative("테스트 상품 상세");
+        then(itemList).hasSize(10);
+    }
+
 
 }
